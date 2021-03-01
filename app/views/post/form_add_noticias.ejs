@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adicionar noticias</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel="stylesheet" type="text/css" href="css/form.css">
+</head>
+<body>
+
+	<div class="load_container">
+		<div class="loader" id="load"></div>
+	</div>
+
+<div class='center'>
+	<h2 style='text-align: center;margin:10px 0;'>Cadastre uma nova noticia</h2>
+
+	<%if(errors.length > 0){%>
+		<%for(let i = 0 ; i < errors.length ; i++){%>
+			<p style="color:red;"><%= errors[i].msg %></p>
+		<%}%>
+	<%}%>
+	<form method="POST">
+		<div>
+			<input type="text" class='w100' value='<%= dados.autor%>' name="autor" placeholder='Autor'>
+		</div>
+		<br>
+		<div>
+			<input type="text" class='w100' value='<%= dados.titulo%>' name="titulo" placeholder="Titulo">
+		</div>
+		<br>
+		<div>
+			<textarea name='resumo'id='txtarea' placeholder="Resumo da noticia"><%= dados.resumo%></textarea>
+		</div>
+		<br>
+		<div id='category_wrapper'>
+			<select id='categories' name='categories'>
+				<option selected disabled>Categoria</option>
+				<%for(let i = 0 ; i < categorias.length; i++){%>
+					<option name="<%= categorias[i].categoria%>"><%= categorias[i].categoria%></option>
+				<%}%>
+			</select>
+			<button id='btn_category'>Adicionar Categoria</button>
+		</div>
+		<br>
+		<div>
+			<input id='btn_cadastrar' type="submit" value='Cadastrar'>
+		</div>
+	</form>
+
+</div><!-- center -->
+
+	<form id='form_category' action='category_add' method='POST'>
+		<input type="text" name="categoria">
+		<input type="submit" value='Adicionar'>
+	</form>
+
+<script src='js/form.js'></script>
+<script>
+	window.onload = () => {
+		const loader = document.querySelector('.load_container')
+		loader.className += ' hidden'
+	}
+</script>
+</body>
+</html>

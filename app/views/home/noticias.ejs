@@ -1,0 +1,122 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Principais noticias</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+</head>
+<body>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Principais noticias</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link href='css/styles.css' rel='stylesheet'>
+</head>
+
+<body>
+
+	<div class="load_container">
+		<div id="load" class='loader'></div>
+	</div>
+
+	<header>
+		<div class='center'>
+			<div class='logo'>
+				<h2>Minha logo</h2>
+			</div><!-- logo --> 
+			<div class='desktop_menu'>
+				<ul class='menu'>
+					<li><a href="/user/cadastro">Cadastrar</a><span>|</span><a href="/user/login">Entrar</a></li>
+				</ul><!-- menu -->
+			</div><!-- desktop_menu -->
+
+			<div class="mobile_menu">
+				<div class="menu-open">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<ul id='display'>
+					<span id="delete">X</span>
+					<li><a href="/user/cadastro">Cadastrar</a><a href="/user/login">Entrar</a></li>
+				</ul>
+			</div>
+		</div><!-- center -->
+	</header>
+
+	<section class='noticias'>
+		<div class='container'>
+			<h1 style='text-align: center;'>Noticias mais recentes</h1>
+			<div class='center'>
+			<%if(news.length > 0){%>
+				<%for(let i = 0; i < news.length ; i++){%>
+					<div class='noticias_wrapper'>
+						<div id='<%= news[i]._id%>' class="noticia_redirect"></div>
+						<div class='noticias_single'>
+							<h2><%= news[i].titulo%></h2>
+							<p>Autor: <%= news[i].autor%></p>
+							<p>Categoria: <%= news[i].categoria%></p>
+							<p id='resumo' ><%= news[i].resumo%></p>
+							<a id='read_more' href="/noticia?id=<%=news[i]._id%>">Ler mais...</a>
+						</div><!-- noticias_single -->
+					</div><!-- noticias_wrapper -->
+				<%}%>
+			<%}%>
+			</div><!-- center -->
+		</div><!-- container -->
+	</section>
+
+	<a id='btn_cadastrar_noticia' href="/formulario_de_inclusao_noticias">Nova noticia</a>
+
+
+<script src='js/loader.js'></script>
+<script>
+
+window.addEventListener('load',function(){
+    const loader = document.querySelector('.load_container')
+    loader.className += ' hidden'
+   
+	const open_menu = document.querySelector('.menu-open')
+	const display = document.getElementById('display')
+
+	open_menu.onclick = () => {
+		display.style.transition = '1s'
+		display.style.display = 'block'
+	}
+
+	document.getElementById('delete').onclick = () => {
+		display.style.display = 'none'
+	}
+
+	// Esta função serve para redirecionar para a noticia single
+
+	function noticiaSingle(){
+		let noticia = document.querySelectorAll('.noticia_redirect')
+
+		for(let i = 0; i < noticia.length; i++){
+			const curNoticia = noticia[i]
+			curNoticia.onclick = (e) => {
+				const id = e.target.id
+				window.location.href = '/noticia?id='+id
+			}
+		}
+	}
+
+	noticiaSingle()
+});
+</script>
+</body>
+</html>

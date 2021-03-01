@@ -1,0 +1,153 @@
+*{
+	margin:0;
+	padding:0;
+	border:0;
+	box-sizing:border-box;
+	font-family: Arial;
+}
+
+body{
+	background: #ededed;
+}
+.load_container{
+	position: fixed;
+	top:0;
+	left:0;
+	z-index: 99;
+	width:100%;
+	height: 100%;
+	display: flex;
+	background: white;
+	justify-content: center;
+	align-items: center;
+}
+.hidden{
+	display: none;
+}
+.loader{
+	position: relative;
+}
+.loader::before,
+.loader::after{
+	content: '';
+	width:1.8em;
+	height: 1.8em;
+	position: absolute;
+	border-radius: 4em;
+}
+.loader::before{
+	background: lightcoral;
+	left:0;
+	transform: translateX(10px);
+	animation:moveleft 1s ease infinite;
+}
+.loader::after{
+	background: lightgreen;
+	right:0;
+	transform:translateX(-10px);
+	animation:moveright 1s ease infinite;
+}
+@keyframes moveright{
+	0%{
+		transform: translateX(-10px);
+	}
+	50%{
+		transform: translateX(10px);
+	}
+	100%{
+		transform: translateX(-10px);
+	}
+}
+@keyframes moveleft{
+	0%{
+		transform: translateX(10px);
+	}
+	50%{
+		transform: translateX(-10px);
+	}
+	100%{
+		transform: translateX(10px);
+	}
+}
+
+.center{
+	max-width: 900px;
+	margin:50px auto;
+	padding: 20px 2%;
+	background: white;
+	position: relative;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.back{
+	width:40px;
+	height: 40px;
+	border:1px solid black;
+	border-radius: 50%;
+	position: absolute;
+	right:10px;
+	top:5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.back:hover{
+	transition: 500ms;
+	width:44px;
+	height: 44px;
+	border-color:green;
+}
+
+.back span{
+	width:20px;
+	height: 3px;
+	position: relative;
+	background: black;
+}
+.back span::before{
+	content: '';
+	position: absolute;
+	top:3px;
+	left:-2px;
+	width:10px;
+	height: 3px;
+	background: black;
+	transform: rotate(45deg);
+}
+.back span::after{
+	content: '';
+	position: absolute;
+	top:-3px;
+	left:-2px;
+	width:10px;
+	height: 3px;
+	background: black;
+	transform: rotate(-45deg);
+}
+
+.back:hover span{
+	transition: 300ms;
+	background: green;
+}
+.back:hover span::before{
+	transition: 400ms;
+	background: green;
+}
+.back:hover span::after{
+	transition: 400ms;
+	background: green;
+}
+.categoria{
+	position: absolute;
+	bottom:5px;
+	left:10px;
+}
+.resumo{
+	margin:10px 0 0 30px;
+}
+.autor{
+	position: absolute;
+	bottom:5px;
+	right: 10px;
+}

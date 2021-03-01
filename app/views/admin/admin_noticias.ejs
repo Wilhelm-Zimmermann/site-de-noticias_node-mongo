@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Principais noticias</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: Arial;
+		}
+		body{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		table,tr,th,td{
+			border:1px solid black;
+			border-collapse: collapse;
+			padding: 10px;
+		}
+
+		#del{
+			text-decoration: none;
+			padding:5px;
+			background: red;
+			color:white;
+		}
+
+		#view{
+			text-decoration: none;
+			padding:5px;
+			background: blue;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+
+	<%if(news.length === 0){%>
+		<h1>Nao foi encontrada nenhuma noticia</h1>
+		<a href="/formulario_de_inclusao_noticias">Adicione</a>
+	<%}%>
+
+<%if(news.length > 0){%>
+	<table>
+		<tr>
+			<th>Autor</th>
+			<th>Titulo</th>
+			<th>DELETE</th>
+			<th>VIEW</th>
+		</tr>
+
+		
+		<%for(let i = 0 ; i < news.length ; i++){%>
+			<tr>
+				<td><%=news[i].autor %></td>
+				<td><%=news[i].titulo %></td>
+				<td><a id='del' href="/noticia/delete?id=<%=news[i]._id%>">Deletar</a></td>
+				<td><a id='view' href="/noticia?id=<%=news[i]._id%>">Visualizar</a></td>
+
+			</tr>
+		<%}%>
+		
+	</table>
+<%}%>
+
+	
+
+</body>
+</html>

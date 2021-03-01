@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Principais noticias</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel="stylesheet" type="text/css" href="/css/single_news.css">
+</head>
+<body>
+
+	<div class="load_container">
+		<div id='load' class="loader"></div>
+	</div>
+
+	<h1 style='text-align: center;margin-top:20px;'><%= noticia.categoria%></h1>
+
+	<div class="center">
+		<div class='noticia_wrapper'>
+			<div class='noticia_single'>
+				<div class="back"><span></span></div>
+				<h1><%= noticia.titulo%></h1>
+				<div class="autor">	
+					<p><%=noticia.autor%></p>
+				</div>
+				<div class="resumo">
+					<p><%=noticia.resumo%></p>
+				</div>
+			</div><!-- noticia_single -->
+		</div><!-- noticia_wrapper -->
+	</div><!-- center -->
+
+<script>
+	
+	window.onload = () => {
+		const loader = document.querySelector('.load_container')
+		loader.className += ' hidden'
+    		
+		document.querySelector('.back').onclick = () => {
+			window.location.href = '/'
+		}
+	}
+</script>
+</body>
+</html> 

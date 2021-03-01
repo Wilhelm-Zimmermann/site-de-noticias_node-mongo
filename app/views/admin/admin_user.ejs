@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Principais noticias</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: Arial;
+		}
+		body{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		table,tr,th,td{
+			border:1px solid black;
+			border-collapse: collapse;
+			padding: 10px;
+		}
+
+		#del{
+			text-decoration: none;
+			padding:5px;
+			background: red;
+			color:white;
+		}
+
+		#view{
+			text-decoration: none;
+			padding:5px;
+			background: blue;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+	
+
+	<%if(users.length === 0){%>
+	<div><h1>Nao foi encontrado nenhum Usuario</h1></div>
+		
+		<div><a href="/user/cadastro">Cadastre</a></div>
+	<%}%>
+
+<%if(users.length > 0){%>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Delete</th>
+			<!-- <th>VIEW</th> Sera adicionado futuramente -->
+		</tr>
+
+		
+		<%for(let i = 0 ; i < users.length ; i++){%>
+			<tr>
+				<td><%= users[i]._id%></td>
+				<td><%=users[i].usuario %></td>
+				<td><a id='del' href="users/delete?id=<%=users[i]._id%>">Deletar</a></td>
+		<!-- 		<td><a id='view' href="/noticia?id=<%=users[i]._id%>">Visualizar</a></td> -->
+
+			</tr>
+		<%}%>
+		
+	</table>
+<%}%>
+
+	
+
+</body>
+</html>

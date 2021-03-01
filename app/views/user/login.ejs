@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+	<meta charset="utf-8">
+	<meta name='description' content='site de noticias'>
+	<meta name='keywords' content='site de noticias,noticias de ultima hora'>
+	<meta name='author' content='Wilhelm'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link href='/css/user.css' rel='stylesheet'>
+</head>
+<body>
+
+	<div class="load_container">
+		<div class="loader"></div>
+	</div>
+
+	<%if(msg == 'errorLogin'){%>
+		<h1>Usuario invalido</h1>
+	<%}%>
+
+<div class='center'>
+
+	<h2>Login</h2>
+
+	<%if(errors.length > 0){%>
+		<%for(let c = 0; c < errors.length ; c++){%>
+			<p style='color:red;'><%= errors[c].msg %></p>
+		<%}%>
+	<%}%>
+	<form method='POST'>
+		<div>
+			<input type="text" class='w100' name="usuario" placeholder="Usuario">
+		</div>
+		<div>
+			<input type="text" class='w100' name="senha" placeholder="Senha">
+		</div>
+		<div>
+			<input type="submit" id='btn_login' name="acao" value='Entrar'>
+		</div>
+		<div>
+			<a id='btn_cadastro' href="/user/cadastro">Cadastre-se</a>
+		</div>
+	</form>
+</div>
+
+<script>
+	window.onload = () => {
+		const loader = document.querySelector('.load_container')
+		loader.className += ' hidden'
+	}
+</script>
+</body>
+</html>
