@@ -9,16 +9,16 @@
 # Dependencies
 
 * Node JS
-* Express
-* Consign
-* EJS
-* Body-Parser
-* MongoDB
-* Mongoose
-* Bcrypt
-* Express-Session
-* Express-Validator
-* Consign
+  * Express
+  * Consign
+  * EJS
+  * Body-Parser
+  * MongoDB
+  * Mongoose
+  * Bcrypt
+  * Express-Session
+  * Express-Validator
+  * Consign
 
 # What you need
 * [Node JS](http://nodejs.org)
