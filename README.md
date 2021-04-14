@@ -8,6 +8,7 @@
 
 # Dependencies
 
+* Node JS
 * Express
 * Consign
 * EJS
